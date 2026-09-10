@@ -22,7 +22,7 @@ def assert_lib_exists():
 
 assert_lib_exists()
 setup(
-    name="runai-model-streamer",
+    name="bz-dryrun-model-streamer",
     version=VERSION,
     license_files=("LICENSE",),
     packages=find_packages(),

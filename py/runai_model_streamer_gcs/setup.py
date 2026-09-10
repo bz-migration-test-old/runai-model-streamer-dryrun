@@ -20,7 +20,7 @@ def assert_lib_exists():
 
 assert_lib_exists()
 setup(
-    name="runai-model-streamer-gcs",
+    name="bz-dryrun-model-streamer-gcs",
     version=VERSION,
     license_files=("LICENSE",),
     packages=find_packages(),

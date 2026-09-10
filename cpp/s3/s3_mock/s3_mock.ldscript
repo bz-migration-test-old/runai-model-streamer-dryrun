@@ -1,0 +1,34 @@
+{
+    global:
+        runai_mock_s3_clients;
+        runai_mock_s3_set_response_time_ms;
+        runai_mock_s3_set_inflight_window;
+        runai_mock_s3_max_concurrent;
+        runai_mock_s3_requests;
+        runai_mock_s3_set_failing_path;
+        runai_mock_s3_set_read_failures;
+        runai_mock_s3_total_read_requests;
+        runai_mock_s3_max_events_per_wait;
+        runai_mock_s3_set_append_finished_sentinel;
+        runai_mock_s3_last_client_config_value;
+        runai_mock_s3_cleanup;
+        runai_s3_mock_set_backend_shutdown_policy;
+        runai_mock_s3_is_shutdown;
+        runai_mock_s3_set_files;
+        runai_mock_s3_set_list_files_response;
+        runai_mock_s3_last_list_files_is_recursive;
+        obj_list_files;
+        obj_free_file_list;
+        obj_open_backend;
+        obj_close_backend;
+        obj_create_client;
+        obj_remove_client;
+        obj_request_read;
+        obj_wait_for_completions;
+        obj_cancel_all_reads;
+        obj_remove_all_clients;
+        obj_get_backend_shutdown_policy;
+        obj_get_backend_config;
+
+    local: *;
+};

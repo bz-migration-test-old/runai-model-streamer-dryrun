@@ -1,0 +1,30 @@
+# use C++17
+build --cxxopt=-std=c++17
+
+# compile with '-fPIC'; this is needed for building in optimized mode (i.e. '-c opt').
+build --force_pic
+
+# Build optimised by default. The -O2 itself lives in the toolchain's `opt` feature (see
+# toolchain/template/toolchain.bzl); this line only chooses the mode.
+#
+# Needed because the default mode is fastbuild, which is unoptimised on purpose. 
+## Overridable: `bazel build -c dbg` still wins, because a command-line flag beats an rc file.
+build --compilation_mode=opt
+
+# Disable bzlmod Modules, as this workspace uses WORKSPACE
+# dependency management. See https://bazel.build/external/migration
+build --noenable_bzlmod
+
+# Setting platform_suffix allows the build-cache to be maintained
+# when toggling between platforms (as is done in the Makefile)
+build:aarch64 --platform_suffix=aarch64
+build:aarch64 --platforms=@toolchain//:aarch64
+# Target architecture needs CRC and crypto extensions
+# This is a dependency of the ARM64 build targets in the google-cloud-cpp library.
+build:aarch64 --copt="-march=armv8-a+crc+crypto"
+
+build:x86_64 --platform_suffix=x86_64
+build:x86_64 --platforms=@toolchain//:x86_64
+
+# Azurite testing support (enables AZURE_STORAGE_ACCOUNT_KEY for local testing)
+build:azurite --define azurite_testing=true
